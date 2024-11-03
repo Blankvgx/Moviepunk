@@ -13,45 +13,50 @@
             font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-size: small;
             background-color: #002d3a;
-            color: #6b4131; /* Main text color */
+            color: #6b4131;
+            overflow-x: hidden;
         }
 
         h1, h2 {
             margin: 5px;
             font-size: medium;
             font-weight: 500;
-            color: #ffc881; /* Header color */
+            color: #ffc881;
+            transition: color 0.3s ease;
         }
 
         .logo-container {
-            background-color: #002d3a; /* Background color for the logo section */
-            padding: 40px;
+            background-color: #002d3a;
+            padding: 10px;
             text-align: center;
-            width: 75%;
+            align-items: center;
+            justify-content: center;
+            width: 98%;
         }
 
         .imagePicker#logo {
-            display: inline-block; /* Center logo within the container */
-            border-radius: 50%; /* Optional: make it circular */
-            background-color: #ffffff; /* Background for logo area */
-            border: 0px solid #002d3a; /* Optional border for styling */
+            display: inline-block;
+            border-radius: 50%;
+            background-color: #ffffff;
         }
 
         .imagePicker {
             display: grid;
             align-items: center;
             justify-content: center;
-            margin: 20px 0; /* Adjusted margin for separation */
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Responsive grid */
-            gap: 10px; /* Space between images */
-            background-color: #ffffff; /* Background color for image pickers */
-            padding: 10px; /* Padding for better spacing */
-            border-radius: 8px; /* Rounded corners */
+            margin: 20px 0;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
         }   
 
         img {
@@ -59,8 +64,12 @@
             display: block;
             width: 95%;
             height: auto;
-            border: 0px solid #ffffff; /* Border color around images */
-            border-radius: 4px; /* Slightly rounded images */
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
         }
 
         .container {
@@ -68,22 +77,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .info-text {
-            font-family: sans-serif;
-            color: #6b4131; /* Color for informational text */
-            margin-bottom: 12px; /* Adds spacing between the text and button */
+            color: #6b4131;
+            margin-bottom: 12px;
         }
 
         button {
-            background-color: #a7793e; /* Button background color */
-            border-color: #a7793e; /* Button border color */
+            background-color: #a7793e;
+            border-color: #a7793e;
             border-radius: 16px;
-            border-style: solid;
-            color: rgb(255, 255, 255);
+            color: #fff;
             font-family: sans-serif;
             height: 32px;
+            transition: background-color 0.3s ease;
         }
 
         button:disabled {
@@ -92,12 +106,69 @@
         }
 
         button:not([disabled]):hover {
-            background-color: #856045; /* Darker button on hover */
+            background-color: #856045;
             cursor: pointer;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffc881;
+            font-weight: bold;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 180px;
+            background-color: #a7793e;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #ffc881;
+            font-size: small;
+            padding: 10px;
+            background-color: #002d3a;
+            border-top: 1px solid #6b4131;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #ffc881;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <div class="loading-spinner" id="loadingSpinner"></div>
+
     <div class="logo-container">
         <div class="imagePicker" id="logo"></div>
         <script type="module" src="./logo.js"></script>
@@ -109,24 +180,44 @@
         
         <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
 
-        <h1 style="font-weight: bold;">Props:</h1>
+        <div class="tooltip">
+            <h1 style="font-weight: bold;">Props:</h1>
+            <span class="tooltiptext">Add props to your picture!</span>
+        </div>
         <h2 style="font-weight: bold;">Drag and drop props into your picture!</h2>
         <div class="imagePicker" id="imagePickerProps"></div>
         <script type="module" src="./index.js"></script>
 
         <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
         
-        <h1 style="font-weight: bold;">Borders:</h1>
+        <div class="tooltip">
+            <h1 style="font-weight: bold;">Borders:</h1>
+            <span class="tooltiptext">Add borders to your picture!</span>
+        </div>
         <h2 style="font-weight: bold;">Drag and drop borders into your picture!</h2>
         <div class="imagePicker" id="imagePickerBorders"></div>
         <script type="module" src="./index2.js"></script>
 
         <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
 
-        <h1 style="font-weight: bold;">Themes:</h1>
+        <div class="tooltip">
+            <h1 style="font-weight: bold;">Themes:</h1>
+            <span class="tooltiptext">Customize your picture with themes!</span>
+        </div>
         <h2 style="font-weight: bold;">Drag and drop themes into your picture!</h2>
         <div class="imagePicker" id="imagePickerThemes"></div>
         <script type="module" src="./index3.js"></script>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Moviepunk. | <a href="#" style="color: #ffc881;">Movie</a> | <a href="#" style="color: #ffc881;">Punk</a></p>
+    </footer>
+
+    <script>
+        // Loading spinner hide function
+        window.addEventListener("load", function() {
+            document.getElementById("loadingSpinner").style.display = "none";
+        });
+    </script>
 </body>
 </html>
