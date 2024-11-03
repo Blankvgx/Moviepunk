@@ -7,8 +7,8 @@ const imageList = new Map([
     ["weapon.png", "./images/weapon.png"]
 ]);
 
-const maxWidth = 300;
-const maxHeight = 300;
+const maxWidth = 900;
+const maxHeight = 900;
 const minWidth = 300;
 const minHeight = 300;
 
