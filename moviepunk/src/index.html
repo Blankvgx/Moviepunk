@@ -271,6 +271,27 @@
         <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
 
         <div class="tooltip">
+            <h1 style="font-weight: bold;">Progress:</h1>
+            <span class="tooltiptext">Rate your progress!</span>
+        </div>
+        <h2 style="font-weight: bold;">Rate your work progress:</h2>
+        
+        <label for="progressSlider" id="sliderValue" style="font-size: 24px; color: #ffc881; margin-bottom: 10px; display: block; text-align: center;">0%</label>
+        <input type="range" id="progressSlider" min="0" max="100" value="0" style="width: 90%; margin: 0 auto; display: block;"/>
+        
+        <script>
+            const progressSlider = document.getElementById('progressSlider');
+            const sliderValue = document.getElementById('sliderValue');
+        
+            progressSlider.addEventListener('input', function() {
+                sliderValue.innerText = `${this.value}%`;
+            });
+        </script>
+        
+        <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
+        
+
+        <div class="tooltip">
             <h1 style="font-weight: bold;">CheckList:</h1>
             <span class="tooltiptext">Click, click, click</span>
         </div>
