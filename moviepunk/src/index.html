@@ -164,6 +164,21 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        textarea#quoteInput {
+            width: 90%;
+            height: 100px;
+            margin: 10px auto;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #6b4131;
+            background-color: #ffffff;
+            color: #6b4131;
+            font-family: "Poppins", sans-serif;
+            font-size: medium;
+            resize: vertical;
+        }
+
     </style>
 </head>
 <body>
@@ -207,6 +222,17 @@
         <h2 style="font-weight: bold;">Drag and drop themes into your picture!</h2>
         <div class="imagePicker" id="imagePickerThemes"></div>
         <script type="module" src="./index3.js"></script>
+
+        <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
+
+        <div class="tooltip">
+            <h1 style="font-weight: bold;">Quotes:</h1>
+            <span class="tooltiptext">What to say, what to say...</span>
+        </div>
+        <h2 style="font-weight: bold;">Type up a quote to add into your piece!</h2>
+        <textarea id="quoteInput" placeholder="Type your quote here..."></textarea>
+        <div class="imagePicker" id="imagePickerQuotes"></div>
+        <script type="module" src="./index4.js"></script>
     </div>
 
     <footer class="footer">
