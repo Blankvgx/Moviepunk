@@ -6,10 +6,22 @@
             name="description"
             content="Get started with Add-on development using JavaScript with Document Sandbox Runtime"
         />
-        <meta name="keywords" content="Adobe, Express, Add-On, JavaScript, Document Sandbox Runtime" />
+        <meta name="keywords" content="Adobe, Express, Add-On, JavaScript, Document Sandbox Runtime, Gallery" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Get Started</title>
         <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+            * {
+                font-family: "Poppins", sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-size: small;
+            }
+
             .container {
                 margin: 24px;
                 display: flex;
@@ -17,39 +29,85 @@
                 align-items: center;
             }
 
+            header {
+                margin: 5px;
+                font-size: medium;
+                font-weight: 500;
+            }
+
             .info-text {
-                font-family: sans-serif;
+                font-family: "Poppins", sans-serif;
                 color: rgb(107,65,49);
-                margin-bottom: 12px; /* Adds spacing between the text and button */
+                margin-bottom: 12px;
             }
 
             button {
-                background-color: rgb(225,194,137);
-                border-color: rgb(225,194,137);
-                border-radius: 16px;
-                border-style: solid;
-                color: rgb(255, 255, 255);
-                font-family: sans-serif;
+                background-color: #06d6df;
+                border: 0;
+                border-radius: 25px;
+                color: #fff;
+                font-family: "Poppins", sans-serif;
                 height: 32px;
+                margin: 5px;
+                padding: 5px 10px;
+                width: 50%;
+                cursor: pointer;
             }
 
             button:disabled {
                 background-color: rgb(177, 177, 177);
-                border-color: rgb(177, 177, 177);
+                cursor: not-allowed;
             }
 
             button:not([disabled]):hover {
                 background-color: rgb(211,200,187);
-                cursor: pointer;
+            }
+
+            .gallery {
+                display: grid;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+                gap: 10px;
+                width: 95%;
+            }
+
+            img {
+                margin: 3px;
+                display: block;
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="info-text">Click the button to create a rectangle on the page!</div>
-            <button id="createRectangle" disabled>Create Rectangle</button>
+            <header>Gallery</header>
+            <div class="info-text">Click the buttons to add items to the gallery!</div>
+            <button id="createRectangle">Create Rectangle</button>
+            <button id="createImage">Create Image</button>
+            <div class="gallery" id="gallery"></div>
         </div>
 
-        <script type="module" src="ui/index.js"></script>
+        <script type="module">
+            document.getElementById("createRectangle").addEventListener("click", () => {
+                const gallery = document.getElementById("gallery");
+                const rectangle = document.createElement("div");
+                rectangle.style.width = "100%";
+                rectangle.style.height = "150px";
+                rectangle.style.backgroundColor = "#e1c289";
+                rectangle.style.borderRadius = "8px";
+                gallery.appendChild(rectangle);
+            });
+
+            document.getElementById("createImage").addEventListener("click", () => {
+                const gallery = document.getElementById("gallery");
+                const img = document.createElement("img");
+                img.src = "https://via.placeholder.com/300";
+                img.alt = "Placeholder Image";
+                gallery.appendChild(img);
+            });
+        </script>
     </body>
 </html>

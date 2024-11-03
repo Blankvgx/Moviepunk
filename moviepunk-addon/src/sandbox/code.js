@@ -5,33 +5,47 @@ import { editor } from "express-document-sdk";
 const { runtime } = addOnSandboxSdk.instance;
 
 function start() {
-    // APIs to be exposed to the UI runtime
-    // i.e., to the `index.html` file of this add-on.
     const sandboxApi = {
         createRectangle: () => {
             const rectangle = editor.createRectangle();
-
-            // Define rectangle dimensions.
             rectangle.width = 240;
-            rectangle.height = 180; 
-
-            // Define rectangle position.
+            rectangle.height = 180;
             rectangle.translation = { x: 10, y: 10 };
-
-            // Define rectangle color.
             const color = { red: 0.32, green: 0.34, blue: 0.89, alpha: 1 };
-
-            // Fill the rectangle with the color.
             const rectangleFill = editor.makeColorFill(color);
             rectangle.fill = rectangleFill;
-
-            // Add the rectangle to the document.
             const insertionParent = editor.context.insertionParent;
             insertionParent.children.append(rectangle);
+        },
+        createHatImage: async () => {
+            const imagePath = "https://img1.picmix.com/output/stamp/normal/0/4/3/8/1598340_d2334.png";  // Use a fully-qualified URL
+        
+            try {
+                console.log("Attempting to create image element...");
+                
+                // Create an image element directly using Adobe's editor API
+                const imageElement = editor.createImage();
+                console.log("Image element created:", imageElement);
+        
+                // Set the image source, width, height, and position
+                imageElement.source = imagePath;
+                imageElement.width = 240;
+                imageElement.height = 180;
+                imageElement.translation = { x: 10, y: 10 };
+                console.log("Image properties set.");
+        
+                // Append the image element to the document
+                const insertionParent = editor.context.insertionParent;
+                insertionParent.children.append(imageElement);
+                console.log("Image added successfully from:", imagePath);
+        
+            } catch (error) {
+                console.error('Error adding image:', error);
+            }
         }
+               
     };
 
-    // Expose `sandboxApi` to the UI runtime.
     runtime.exposeApi(sandboxApi);
 }
 
