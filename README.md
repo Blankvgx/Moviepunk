@@ -7,6 +7,9 @@ Moviepunks is an add-on for Adobe Express that allows users to effortlessly add 
 - moviepunk-addon we scrapped and isn't the main project
 - moviepunk is the main project!
 
+We used the start sample code given to us by Adobe and built / expanded on to it:
+https://www.youtube.com/watch?v=kSq4ykQGOdo
+
 ## Technology Used
 
 -   HTML
