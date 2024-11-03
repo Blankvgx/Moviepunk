@@ -58,15 +58,14 @@ async function addToDocument(event) {
 async function resizeImage(image, callback){
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
+    let scale = 1;
 
-    const scaleWidth = image.naturalWidth > maxWidth ? maxWidth / image.naturalWidth
-                        : image.naturalWidth < minWidth ? minWidth / image.naturalWidth : 1;
-                        
-    const scaleHeight = image.naturalHeight > maxWidth ? maxHeight / image.naturalHeight
-                        : image.naturalHeight < minWidth ? minHeight / image.naturalHeight : 1;
-
-    const scale = Math.min(scaleWidth, scaleHeight);
-    
+    if(image.naturalWidth > maxWidth || image.naturalHeight > maxHeight){
+        scale = Math.min(maxWidth/image.naturalWidth, maxHeight/image.naturalHeight)
+    }
+    else if(image.naturalHeight < minHeight || image.naturalWidth < minWidth){
+        scale = Math.max(minWidth / image.naturalWidth, minHeight / image.naturalHeight)
+    }
 
     canvas.width = image.naturalWidth * scale;
     canvas.height = image.naturalHeight * scale;

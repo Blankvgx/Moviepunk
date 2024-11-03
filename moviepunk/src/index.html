@@ -179,6 +179,40 @@
             resize: vertical;
         }
 
+        input[type="text"] {
+                bottom: 1px;
+                margin: 5px;
+                padding: 5px 10px;
+                width: 88%;
+                vertical-align: middle;
+                outline: none !important;
+                border: 1px solid #06d6df;
+                border-radius: 25px;
+            }
+
+        input[type="checkbox"] {
+            accent-color: #f704fe;
+            bottom: 1px;
+            margin: 5px;
+            position: relative;
+            vertical-align: middle;
+            border: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            background-color: #ffe88b;
+            color: #002d3a;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+        }
+
+
     </style>
 </head>
 <body>
@@ -233,11 +267,17 @@
         <textarea id="quoteInput" placeholder="Type your quote here..."></textarea>
         <div class="imagePicker" id="imagePickerQuotes"></div>
         <script type="module" src="./index4.js"></script>
-    </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 Moviepunk. | <a href="#" style="color: #ffc881;">Movie</a> | <a href="#" style="color: #ffc881;">Punk</a></p>
-    </footer>
+        <h1 style="font-weight: bold; text-align: center;">--------------------------------------------------------------------</h1>
+
+        <div class="tooltip">
+            <h1 style="font-weight: bold;">CheckList:</h1>
+            <span class="tooltiptext">Click, click, click</span>
+        </div>
+        <h2 style="font-weight: bold;">Type up a note, and check the ones done!</h2>
+        <script type="module" src="./index5.js"></script>
+
+    </div>
 
     <script>
         // Loading spinner hide function
