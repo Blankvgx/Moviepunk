@@ -13,7 +13,7 @@ function start() {
 
             // Define rectangle dimensions.
             rectangle.width = 240;
-            rectangle.height = 180;
+            rectangle.height = 180; 
 
             // Define rectangle position.
             rectangle.translation = { x: 10, y: 10 };
