@@ -10,6 +10,8 @@ Moviepunks is an add-on for Adobe Express that allows users to effortlessly add 
 We used the start sample code given to us by Adobe and built / expanded on to it:
 https://www.youtube.com/watch?v=kSq4ykQGOdo
 
+https://developer.adobe.com/express/add-ons/docs/guides/getting_started/
+
 ## Inspiration
 Moviepunk stemmed from the thrill of Halloween movies and their amazing movie posters. We originally intended to make the add-on create movie posters that users can add images to, but we fell in love with how the add-on seamlessly fit into Adobe Express's functionality. Because of this, we expanded the project in scope and added various other helpful features.
 ## What it does
